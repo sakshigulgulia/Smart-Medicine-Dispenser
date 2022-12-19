@@ -1,0 +1,360 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Columbia University EECS E4764 IoT Project Report</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<!-- <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span> -->
+							<h1 id="title">Smart Medicine Dispenser</h1>
+							<p>Columbia University <br>
+								EECS E4764 Fall'22 Internet of Things<br>
+								Intelligent and Connected Systems<br>
+								Team 20 Project Report
+							</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<!--
+
+								Prologue's nav expects links in one of two formats:
+
+								1. Hash link (scrolls to a different section within the page)
+
+								   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+								2. Standard link (sends the user to another page/site)
+
+								   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+							-->
+							<ul>
+								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Abstract</span></a></li>
+								<li><a href="#motivation" id="motivation-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Motivation</span></a></li>
+								<li><a href="#system" id="system-link" class="skel-layers-ignoreHref"><span class="icon fa-th">System</span></a></li>
+								<li><a href="#results" id="results-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Results</span></a></li>
+								<li><a href="#references" id="references-link" class="skel-layers-ignoreHref"><span class="icon fa-th">References</span></a></li>
+								<li><a href="#team" id="team-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Our Team</span></a></li>
+								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="https://github.com/sakshigulgulia/Smart-Medicine-Dispenser" class="icon fa-github"><span class="label">Github</span></a></li>
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/Xa2FSWKWbes" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+								<h2 class="alt">Smart Medicine Dispenser</h2>
+								<p>The Smart Medicine Dispenser is an Internet of Things product that keeps track of your medication, reminds you to take your medicines and dispenses it in a timely manner.</p>
+								<p>The product allows you to take a picture of any prescription using a custom made Android App. The product analyses the prescription to store relavent information. The device then automatically dispenses the required medications based on the medicine and time mentioned in the patient's prescription. 
+									Multiple users can use this product to remind themselves to take their pills. This product offers some security features including a fingerprint sensor to ensure that only the authorized individual accesses the pill. Further functionalities include pill tracking, reminders to take your pills, 
+									storage of prescription data in a secure server, and metrics about pill consumption, pill adherance and more.
+								</p>
+
+							<footer>
+								<a href="#motivation" class="button scrolly">Motivation</a>
+							</footer>
+
+						</div>
+					</section>
+
+				<!-- Portfolio -->
+					<section id="motivation" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Motivation</h2>
+							</header>
+
+							<p align="left">
+								Millions of people all over the world are on some kind of medication for various health ailments. Such individuals take different medications at different times of the day and 
+								can forget due to various reasons, such as busy schedules, forgetfulness or suffering from mental ill-health. 
+								
+								<p align="left">
+								The Smart Medicine Dispenser is a user-friendly product designed to improve lives of such individuals. the device helps to keep track of their pills, reminds them to take it and even notifies them when they miss a dose.
+								Added security on the device ensures that the pills are dispensed to the specific user at times noted in the prescription,
+								leaving the patient and their loved ones at ease.
+								</p>
+							</p>
+
+						</div>
+					</section>
+
+
+					<section id="system" class="three">
+						<div class="container">
+
+							<header>
+								<h2>System</h2>
+
+								<p> 
+								The project is divided into 3 main areas: 
+								<p>The Embedded System - Pill dispenser mechanism using Raspberry Pi 4B, Fingerprint Sensor and Stepper Motors</p>
+								<p>Cloud Server and Interfacing - Android App to take pictures of prescriptions, Google Firebase to store prescription data</p> 
+								<p>Data Processing and Analytics - Google Cloud Platform to perform Optical Chracter Recognition (OCR) to extract and populate the database, ThingSpeak API to track pill consumption, pill counts and pill adherance.</p>
+								</p>
+							</header>
+
+							<h3 align="left">Architecture</h3>
+
+							<p align="left">	
+								The block diagram below gives a brief idea about the various components used in our device.
+								The Raspberry Pi controls the various actuators (Stepper Motors) over the GPIO communication and the AdaFruit fingerprint sensor over the UART interface. The Raspberry Pi reads data off the the Google Firebase/Google Sheets database using REST APIs to keep track of the pill dispensation times.
+								The Android App created using Android Studio is connected to the Google Firebase server which stores the prescription images in a secure manner. The app is written in Java and connects to Firebase using the Google's internal infrastructure. 
+								The VM instance on GCP runs our Optical Character Recognition algorithm. We use Pytorch libraries and EasyOCR libraries to perform the text extraction on a cloud instance with GPU support to allow accelaration using CUDA. 
+								The extracted text is then used to populate the Google Firebase/Google Sheet database from where the Raspberry Pi eventually reads it. A shell script ensures the images are deleted from the VM instance the moment they are processed and keeps no record of the data that was processed.
+								The feedback mechanism through an audible buzzer connected to Raspberry Pi over ADC, as well as text messages using the Twilio REST API provide reminders to the patients.
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/Block_Diagram.png" alt="" /></a>
+								<header>
+									<h3>Block Diagram</h3>
+								</header>
+							</article>
+							</p>
+
+							<h3 align="left">Prototype</h3>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/3D_Print.png" alt="" /></a>
+								<header>
+									<h3>3D Printed Dispensing Models</h3>
+								</header>
+							</article>
+							
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/Android.jpeg" alt="" /></a>
+								<header>
+									<h3>Android Application</h3>
+								</header>
+							</article>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/Firebase.png" alt="" /></a>
+								<header>
+									<h3>Google Firebase</h3>
+								</header>
+							</article>
+
+
+						</div>
+					</section>
+
+
+					<section id="results" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Results</h2>
+							</header>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/Setup.png" alt="" /></a>
+								<header>
+									<h3>Model Setup</h3>
+								</header>
+							</article>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/Pill_Dispenser.png" alt="" /></a>
+								<header>
+									<h3>Medicine Dispensing Mechanism</h3>
+								</header>
+							</article>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/Connections.png" alt="" /></a>
+								<header>
+									<h3>Motor, Fingerprint, Buzzer connections to Raspberry Pi</h3>
+								</header>
+							</article>
+
+							<header>
+								<h3>Data Visualization</h3>
+							</header>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/ThingSpeak.jpeg" alt="" /></a>
+								<header>
+									<h3>Tracking pill consumption using Thingspeak for 4 pills</h3>
+								</header>
+							</article>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/prepop.png" alt="" /></a>
+								<header>
+									<h3>Prepopulated data for pill consumption over a 7-day duration</h3>
+								</header>
+							</article>
+
+							<article class="item">
+								<a href="#" class="image fit"><img src="images/missedpill.png" alt="" /></a>
+								<header>
+									<h3>Prepopulated data for missed pills over a 7-day duration</h3>
+								</header>
+							</article>
+
+						</div>
+					</section>
+
+					<section id="references" class="three">
+						<div class="container">
+
+							<header>
+								<h2>References</h2>
+							</header>
+
+							<p align="left">1. OCR - <a href="https://github.com/JaidedAI/EasyOCR">https://github.com/JaidedAI/EasyOCR</a><br></p>
+							<p align="left">2. Google Cloud - <a href="https://cloud.google.com/storage/docs/uploading-objects#storage-upload-object-java">https://cloud.google.com/storage/docs/uploading-objects#storage-upload-object-java</a><br></p>
+							<p align="left">3. Google Spreadsheets - <a href="https://medium.com/game-of-data/play-with-google-spreadsheets-with-python-301dd4ee36eb">https://medium.com/game-of-data/play-with-google-spreadsheets-with-python-301dd4ee36eb</a><br></p>
+							<p align="left">4. Stepper Motor - <a href="https://joy-it.net/files/files/Produkte/SBC-Moto1/SBC-Moto1-Manual.pdf">https://joy-it.net/files/files/Produkte/SBC-Moto1/SBC-Moto1-Manual.pdf</a><br></p>
+
+						</div>
+					</section>
+
+
+				<!-- About Me -->
+					<section id="team" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Our Team</h2>
+							</header>
+
+							<!-- <a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a> -->
+
+
+							<div class="row">
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/Prathamesh.JPG" alt="" /></a>
+										<header>
+											<h3>Prathamesh Sahasrabudhe</h3>
+											<p>MS Electrical Engineering</p>
+											<a href="www.linkedin.com/in/prathamesh-sahasrabudhe">LinkedIn</a><br>
+										</header>
+									</article>
+								</div>
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/Rahul.jpg" alt="" /></a>
+										<header>
+											<h3>Rahul Shanbhag</h3>
+											<p>MS Electrical Engineering</p>
+											<p>Interested in Embedded System design, Networking Protocols, IoT and 5G</p>
+											<a href="https://www.linkedin.com/in/shanbhag-rahul">LinkedIn</a><br>
+										</header>
+									</article>
+								</div>
+								<div class="4u$ 12u$(mobile)">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/Sakshi.JPEG" alt="" /></a>
+										<header>
+											<h3>Sakshi Gulgulia</h3>
+											<p>MS Electrical Engineering</p>
+											<p>Interested in Embedded Systems, IoT, and Software Security </p>
+											<a href="https://www.linkedin.com/in/sakshi-gulgulia">LinkedIn</a><br>
+											
+										</header>
+									</article>
+								</div>
+							</div>
+
+						</div>
+					</section>
+
+				<!-- Contact -->
+					<section id="contact" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Contact</h2>
+							</header>
+
+							<p align="left">
+								<strong>Rahul Shanbhag: </strong>rns2166@columbia.edu</br>
+								<strong>Prathamesh Sahasrabudhe: </strong>ps33206@columbia.edu</br>
+								<strong>Sakshi Gulgulia: </strong>sag2267@columbia.edu</br>
+							</br>
+								<strong>Columbia University </strong><a href="http://www.ee.columbia.edu">Department of Electrical Engineering</a><br>
+								<!-- <strong>Class Website:</strong>
+									<a href="https://edblogs.columbia.edu/eecs4764-001-2019-3/">Columbia University EECS E4764 Fall '22 IoT</a></br> -->
+								<strong>Instructor:</strong> <a href="http://fredjiang.com/">Professsor Xiaofan (Fred) Jiang</a>
+							</p>
+
+
+							<!-- <form method="post" action="#">
+								<div class="row">
+									<div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="12u$">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="12u$">
+										<input type="submit" value="Send Message" />
+									</div>
+								</div>
+							</form> -->
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; IoT Project | All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollzer.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
